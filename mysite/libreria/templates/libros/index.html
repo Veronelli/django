@@ -20,14 +20,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for libro in libros %}
                     <tr>
-                        <td>1</td>
-                        <td>Django con python</td>
-                        <td>Imagen.png</td>
-                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae dignissimos quod aliquam ducimus! Aliquid aliquam soluta velit itaque! Facere optio natus rerum quis voluptatibus, repellendus vitae minima esse placeat nobis!</td>
-                        <td>Editar | Borrar</td>
+                        <td>{{ libro.id }}</td>
+                        <td>{{ libro.titulo }}</td>
+                        <td>
+                            <img src="{{ libro.imagen.url }}" width="200px">
+                        </td>
+                        <td>{{ libro.descripcion }}</td>
+                        <td class="d-flex">
+                            <a name="" id="" class="btn btn-primary m-2" href="{% url 'editar' libro.id%}" role="button">
+                            Editar
+                            </a> 
+                            <a name="" id="" class="btn btn-warning m-2" href="{% url 'borrar' libro.id %}" role="button">
+                                Borrar
+                            </a>
+                            
+                        </td>
                         
                     </tr>
+                    {%  endfor %}
                     <tr>
                         <td scope="row"></td>
                         <td></td>
